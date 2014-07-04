@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+      <dl>
+        <dt>发布ID:
+        <dd><input type=text size=30 name=b_id>
+	<dt>发布信息类型:
+	<dd>
+	<select name="type">
+	<option value="parking">停车场</option>
+	<option value="advertise">公益广告</option>
+	</select>
+	<dt>所在位置（街道号码）:
+        <dd><input type=text size=30 name=block>
+        <dt>信息内容:
+        <dd><textarea name=text rows=5 cols=40></textarea>
+        <dd><input type=submit value=发送>
+      </dl>
+    </form>
+  {% endif %}
+  <ul class=entries>
+  {% for entry in entries %}
+    <li><h2>发布者ID：  {{ entry.b_id }}</h2>
+	<p>发布信息类型：   {{ entry.type }}</p>
+	<p>所在位置：   {{ entry.block }}街道</p>
+	<p>信息内容：   {{ entry.text|safe }}</p>
+  {% else %}
+    <li><em>还没有发布信息</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
