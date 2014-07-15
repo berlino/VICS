@@ -4,11 +4,11 @@
     <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
       <dl>
         <dt>街道号：
-        <dd><input type=text size=30 name=block>
+        <dd><input type=text size=30 name=block >
 	<dt>信息类型：
 	<select name="type">
+	<option value="emergency">紧急车道</option>
 	<option value="advertise">公益广告</option>
-	<option value="emergency">紧急情况</option>
 	<option value="parking">停车场</option>
 	</select>
 	<dt>信息内容：	

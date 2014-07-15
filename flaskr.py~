@@ -91,7 +91,7 @@ def add_entry():
 	db.execute('update entries set park_num=? where block=?',[my_result[0][3]+int(request.form['text']),int(block)])
 	db.commit()
     if info_type=='emergency':
-	db.execute('update entries set state=? text=? where block=?',[my_result[0][1],request.form['text'],int(block)])
+	db.execute('update entries set state=?,text=? where block=?',[my_result[0][1]+64,request.form['text'],int(block)])
 	db.commit()
     if info_type=='advertise':
 	db.execute('update entries set text=? where block=?',[request.form['text'],int(block),])
